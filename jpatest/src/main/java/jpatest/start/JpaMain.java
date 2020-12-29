@@ -1,16 +1,17 @@
 package jpatest.start;
 
-import java.util.List;
+import java.util.Date;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import jpatest.start.entity.Item;
 import jpatest.start.entity.Member;
 import jpatest.start.entity.Order;
-
-import org.hibernate.*;
+import jpatest.start.entity.OrderItem;
+import jpatest.start.entity.OrderStatus;
 
 public class JpaMain {
 	public static void main(String[] args) {
@@ -31,27 +32,45 @@ public class JpaMain {
 	}
 	
 	private static void logic(EntityManager em) {
-//		String id = "id1";
-//		Member member = new Member();
-//		member.setId(id);
-//		member.setUsername("지한");
-//		member.setAge(2);
-//		
-//		em.persist(member);
-//		
-//		member.setAge(20);
-//		
-//		Member findMember = em.find(Member.class, id);
-//		System.out.println("findMember=" + findMember.getUsername() + ", age=" + findMember.getAge());
-//		
-//		List<Member> members = em.createQuery("select m from Member m", Member.class).getResultList();
-//		System.out.println("members.size=" + members.size());
-		
 //		em.remove(member);
 		
-//		Order order = em.find(Order.class, 1);
+		Member insertMember = new Member();
+		Member insertMember2 = new Member();
+		Order insertOrder = new Order();
 		
-//		Member member = em.find(Member.class, order.getMemberId());
+		
+		insertMember.setCity("seoul");
+		insertMember.setName("jina");
+		insertMember.setStreet("gm");
+		insertMember.setZipcode("1234");
+		
+		
+		insertMember2.setCity("Gyeonggi-do");
+		insertMember2.setName("jane");
+		insertMember2.setStreet("street");
+		insertMember2.setZipcode("4321");
+		
+		em.persist(insertMember);
+		em.persist(insertMember2);
+		
+		Member findMember = em.find(Member.class, Long.valueOf(2));
+		System.out.println("findMember=" + findMember.getName());
+		
+		
+		insertOrder.setMember(insertMember);
+		insertOrder.setOrderDate(new Date());
+		insertOrder.setStatus(OrderStatus.ORDER);
+		
+		em.persist(insertOrder);
+		
+		Order order1 = em.find(Order.class, Long.valueOf(3));
+		Member member1 = order1.getMember();
+		System.out.println("findMember=" + member1.getName());
+//		
+//		Order order2 = em.find(Order.class, "orderId_2");
+//		OrderItem orderItem = order2.getOrderItems().get(0);
+//		Item item = orderItem.getItem();
+		
 		
 	}
 }

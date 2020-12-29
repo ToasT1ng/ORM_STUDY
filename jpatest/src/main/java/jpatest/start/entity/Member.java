@@ -1,11 +1,16 @@
 package jpatest.start.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+//import antlr.collections.List;
 import lombok.Data;
 
 @Entity
@@ -27,4 +32,7 @@ public class Member {
 	
 	@Column(name="ZIPCODE")
 	private String zipcode;
+	
+	@OneToMany(mappedBy="member")
+	private List<Order> orders = new ArrayList<Order>();
 }
