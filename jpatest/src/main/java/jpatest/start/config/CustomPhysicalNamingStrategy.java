@@ -1,0 +1,49 @@
+package jpatest.start.config;
+
+import org.hibernate.boot.model.naming.Identifier;
+import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;
+import org.hibernate.engine.jdbc.env.spi.JdbcEnvironment;
+
+import antlr.StringUtils;
+
+import java.util.Locale;
+
+@SuppressWarnings("serial")
+public class CustomPhysicalNamingStrategy extends PhysicalNamingStrategyStandardImpl {
+	
+	
+//    public Identifier toPhysicalCatalogName(final Identifier identifier, final JdbcEnvironment jdbcEnv) {
+//        return convertToSnakeCase(identifier);
+//    }
+
+    
+    public Identifier toPhysicalColumnName(Identifier name, JdbcEnvironment context) {
+    	final String newName = name.getText().toUpperCase();
+        return Identifier.toIdentifier(newName);
+    }
+
+    
+//    public Identifier toPhysicalSchemaName(final Identifier identifier, final JdbcEnvironment jdbcEnv) {
+//        return convertToSnakeCase(identifier);
+//    }
+//
+//   
+//    public Identifier toPhysicalSequenceName(final Identifier identifier, final JdbcEnvironment jdbcEnv) {
+//        return convertToSnakeCase(identifier);
+//    }
+//
+//    
+//    public Identifier toPhysicalTableName(final Identifier identifier, final JdbcEnvironment jdbcEnv) {
+//        return convertToSnakeCase(identifier);
+//    }
+//
+//    private Identifier convertToSnakeCase(final Identifier identifier) {
+//        final String regex = "([a-z])([A-Z])";
+//        final String replacement = "$1_$2";
+//        final String newName = identifier.getText()
+//          .replaceAll(regex, replacement)
+//          .toLowerCase();
+//        return Identifier.toIdentifier(newName);
+//    }
+
+}

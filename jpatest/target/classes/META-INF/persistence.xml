@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence
+	xmlns="http://java.sun.com/xml/ns/persistence"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+            version="2.0">
+	<persistence-unit name="jpatest">
+		<class>jpatest.start.Memberp</class>
+		<properties>
+
+			<property name="javax.persistence.jdbc.driver"
+				value="com.mysql.cj.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://localhost:3306/jpa?characterEncoding=UTF-8&amp;serverTimezone=UTC" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password"
+				value="sa247971" />
+				
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<!-- <property name="hibernate.connection.driver_class"
+				value="org.postgresql.Driver" /> -->
+			<!-- <property name="hibernate.connection.url"
+				value="jdbc:postgresql://localhost:5432:xxxxx" />
+			<property name="hibernate.connection.username" value="xxxxx" />
+			<property name="hibernate.connection.password" value="xxxxx" />
+			<property name="hibernate.connection.pool_size" value="5" /> -->
+			<!-- <property name="hibernate.show_sql" value="true" /> -->
+			<property name="hibernate.format_sql" value="true" />
+			<!-- <property name="hibernate.max_fetch_depth" value="5" />  -->
+			<!-- <property name="hibernate.hbm2ddl.auto" value="create" /> -->
+			<!-- <property name="hibernate.physical_naming_strategy" value="jpatest.start.config.CustomPhysicalNamingStrategy" /> -->
+			<property name="hibernate.use_sql_comments" value="true" />
+			<property name="hibernate.id.new_generator_mappings" value="true" />
+			
+		</properties>
+	</persistence-unit>
+</persistence>
